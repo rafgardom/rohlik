@@ -1,0 +1,47 @@
+version: "2.2"
+
+networks:
+  back-end:
+    driver: bridge
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    hostname: postgres
+    networks:
+      - back-end
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: rohlik
+      POSTGRES_PASSWORD: rohlik
+      POSTGRES_DB: rohlik
+
+  app:
+    image: 'rohlik-app'
+    build:
+      context: .
+    container_name: app
+    networks:
+      - back-end
+    environment:
+      - spring.datasource.url=jdbc:postgresql://postgres:5432/rohlik
+      - spring.datasource.username=rohlik
+      - spring.datasource.password=rohlik
+      - spring.jpa.hibernate.ddl-auto=create-drop
+      - order-cancel-time=30
+    depends_on:
+      - postgres
+    ports:
+      - '8080:8080'
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@rohlik.com
+      PGADMIN_DEFAULT_PASSWORD: rohlik
+    ports:
+      - "5050:80"

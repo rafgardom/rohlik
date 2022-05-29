@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "401380df-83a4-41f3-bd51-c4457ac881d6",
+		"name": "Rohlik",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Product",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Product test\",\r\n    \"stock\": 15,\r\n    \"price\": 23.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/product/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/product/44fc8b71-0e94-47eb-b791-d4c120c650dc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product",
+						"44fc8b71-0e94-47eb-b791-d4c120c650dc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"ef470b4f-b1f7-44e6-8366-c92e8e0023ee\",\r\n    \"name\": \"Product test update\",\r\n    \"stock\": 1,\r\n    \"price\": 99.15,\r\n    \"baseAuditory\": {\r\n        \"createdDate\": \"2022-05-28T20:48:43.5410897\",\r\n        \"endDate\": null,\r\n        \"updatedDate\": null\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productXOrderDTOList\":[\r\n        {\r\n            \"productId\":\"07e13cb2-6ee7-461f-a5cc-0c6daa2277c0\",\r\n            \"quantity\": 3\r\n         },\r\n         {\r\n            \"productId\":\"ac0c9e94-d4b1-4732-b0ab-644fe5149a91\",\r\n            \"quantity\": 1\r\n         }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/order/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/order/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						""
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pay order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/order/fcd6ed88-154d-4a63-bd04-93b4ee381bee/pay",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"order",
+						"fcd6ed88-154d-4a63-bd04-93b4ee381bee",
+						"pay"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
